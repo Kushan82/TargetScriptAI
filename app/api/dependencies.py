@@ -1,3 +1,5 @@
+"""Common API dependencies for TargetScriptAI."""
+
 from typing import Dict, Any
 from fastapi import Depends, HTTPException, status
 
@@ -39,7 +41,7 @@ def validate_content_config(config: Dict[str, Any]) -> Dict[str, Any]:
             )
     
     # Validate content type
-    valid_content_types = ["blog_post", "social_media", "email_campaign", "ad_copy", "landing_page", "case_study"]
+    valid_content_types = ["blog_post", "social_media", "email_campaign", "ad_copy", "landing_page", "case_study", "newsletter", "whitepaper"]
     if config["content_type"] not in valid_content_types:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -47,7 +49,7 @@ def validate_content_config(config: Dict[str, Any]) -> Dict[str, Any]:
         )
     
     # Validate tone
-    valid_tones = ["professional", "casual", "friendly", "authoritative", "conversational", "formal"]
+    valid_tones = ["professional", "casual", "friendly", "authoritative", "conversational", "formal", "innovative"]
     if config["tone"] not in valid_tones:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
