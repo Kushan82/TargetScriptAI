@@ -1,0 +1,58 @@
+{
+  "personas": [
+    {
+      "id": "startup_founder_tech",
+      "name": "Tech Startup Founder",
+      "type": "startup_founder",
+      "industry": "technology",
+      "age_range": "28-40",
+      "experience_level": "intermediate",
+      "company_size": "startup",
+      "primary_goals": [
+        "Acquire early customers",
+        "Raise Series A funding",
+        "Build brand awareness",
+        "Scale product-market fit"
+      ],
+      "pain_points": [
+        "Limited marketing budget",
+        "Need quick, measurable results",
+        "Wearing multiple hats",
+        "Competition from established players"
+      ],
+      "preferred_channels": ["social_media", "content_marketing", "email", "partnerships"],
+      "tone_preference": "innovative",
+      "content_types": ["blog_posts", "social_media", "pitch_decks", "case_studies"],
+      "description": "A tech-savvy entrepreneur building a disruptive product, focused on rapid growth and investor attraction.",
+      "is_active": true,
+      "created_at": "2024-01-01T00:00:00+00:00"
+    },
+    {
+      "id": "marketing_manager_saas",
+      "name": "SaaS Marketing Manager", 
+      "type": "marketing_manager",
+      "industry": "technology",
+      "age_range": "30-45",
+      "experience_level": "advanced",
+      "company_size": "medium",
+      "primary_goals": [
+        "Increase lead generation",
+        "Improve conversion rates",
+        "Reduce customer acquisition cost",
+        "Build thought leadership"
+      ],
+      "pain_points": [
+        "Proving marketing ROI",
+        "Long sales cycles",
+        "Technical product complexity",
+        "Competitive market saturation"
+      ],
+      "preferred_channels": ["content_marketing", "paid_ads", "webinars", "email"],
+      "tone_preference": "professional",
+      "content_types": ["whitepapers", "webinars", "email_campaigns", "landing_pages"],
+      "description": "An experienced marketing professional focused on data-driven growth strategies for B2B SaaS products.",
+      "is_active": true,
+      "created_at": "2024-01-01T00:00:00+00:00"
+    }
+  ]
+}
