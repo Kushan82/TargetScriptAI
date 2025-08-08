@@ -2,30 +2,40 @@ from typing import Optional, List, Dict, Any
 from pydantic import BaseModel, Field
 from enum import Enum
 
-
 class PersonaType(str, Enum):
-    BUSINESS_OWNER = "business_owner"
+    """Persona type enumeration."""
+    STARTUP_FOUNDER = "startup_founder"
     MARKETING_MANAGER = "marketing_manager" 
     CONTENT_CREATOR = "content_creator"
-    SALES_PROFESSIONAL = "sales_professional"
-    STARTUP_FOUNDER = "startup_founder"
+    BUSINESS_OWNER = "small_business_owner"  # Updated to match JSON
+    EXECUTIVE = "enterprise_executive"       # Added missing type
     FREELANCER = "freelancer"
+    CONSULTANT = "consultant"                # Added missing type
+    AGENCY_OWNER = "agency_owner"           # Added missing type
+    EDUCATOR = "educator"                   # Added missing type
+    HEALTHCARE = "healthcare_professional"  # Added missing type
+    FINANCE = "finance_professional"        # Added missing type
+    SALES_PROFESSIONAL = "sales_professional"
     CUSTOM = "custom"
 
-
 class Industry(str, Enum):
+    """Industry enumeration."""
     TECHNOLOGY = "technology"
     HEALTHCARE = "healthcare"
     FINANCE = "finance"
     EDUCATION = "education"
     RETAIL = "retail"
+    MEDIA = "media"                         # Added missing industry
+    PROFESSIONAL_SERVICES = "professional_services"  # Added missing industry
+    MARKETING = "marketing"                 # Added missing industry
     REAL_ESTATE = "real_estate"
     CONSULTING = "consulting"
     MANUFACTURING = "manufacturing"
     OTHER = "other"
 
-
 class Persona(BaseModel):
+    """Persona model with comprehensive attributes."""
+    
     id: str = Field(..., description="Unique persona identifier")
     name: str = Field(..., description="Persona name")
     type: PersonaType = Field(..., description="Persona type")
@@ -44,6 +54,11 @@ class Persona(BaseModel):
     # Communication preferences
     tone_preference: str = Field("professional", description="Preferred communication tone")
     content_types: List[str] = Field(..., description="Preferred content types")
+    
+    # Additional attributes for comprehensive personas
+    demographics: Optional[str] = Field(None, description="Detailed demographics")
+    content_preferences: Optional[List[str]] = Field(None, description="Content preferences")
+    additional_context: Optional[str] = Field(None, description="Additional context")
     
     # Context
     description: Optional[str] = Field(None, description="Detailed persona description")
@@ -73,9 +88,9 @@ class Persona(BaseModel):
             }
         }
 
-
 class PersonaCreate(BaseModel):
- 
+    """Model for creating new personas."""
+    
     name: str = Field(..., description="Persona name")
     type: PersonaType = Field(..., description="Persona type")
     industry: Industry = Field(..., description="Industry category")
@@ -84,11 +99,15 @@ class PersonaCreate(BaseModel):
     preferred_channels: List[str] = Field(..., description="Preferred marketing channels")
     tone_preference: str = Field("professional", description="Preferred communication tone")
     content_types: List[str] = Field(..., description="Preferred content types")
+    
+    # Optional fields for comprehensive persona creation
+    demographics: Optional[str] = Field(None, description="Detailed demographics")
+    content_preferences: Optional[List[str]] = Field(None, description="Content preferences")
+    additional_context: Optional[str] = Field(None, description="Additional context")
     description: Optional[str] = Field(None, description="Detailed persona description")
 
-
 class PersonaUpdate(BaseModel):
-    
+    """Model for updating existing personas."""
     
     name: Optional[str] = Field(None, description="Persona name")
     primary_goals: Optional[List[str]] = Field(None, description="Primary business goals")
@@ -96,5 +115,8 @@ class PersonaUpdate(BaseModel):
     preferred_channels: Optional[List[str]] = Field(None, description="Preferred marketing channels")
     tone_preference: Optional[str] = Field(None, description="Preferred communication tone")
     content_types: Optional[List[str]] = Field(None, description="Preferred content types")
+    demographics: Optional[str] = Field(None, description="Detailed demographics")
+    content_preferences: Optional[List[str]] = Field(None, description="Content preferences")
+    additional_context: Optional[str] = Field(None, description="Additional context")
     description: Optional[str] = Field(None, description="Detailed persona description")
     is_active: Optional[bool] = Field(None, description="Whether persona is active")
