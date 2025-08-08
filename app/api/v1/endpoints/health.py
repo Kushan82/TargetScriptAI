@@ -55,7 +55,7 @@ async def health_check(
         try:
             personas = persona_service.get_all_personas()
             components["persona_service"] = "healthy"
-            components["persona_count"] = len(personas)
+            components["persona_count"] = str(len(personas))
         except Exception:
             components["persona_service"] = "unhealthy"
         
@@ -63,7 +63,7 @@ async def health_check(
         try:
             content_types = orchestrator.get_supported_content_types()
             components["orchestrator"] = "healthy" if content_types else "unhealthy"
-            components["content_types_count"] = len(content_types)
+            components["content_types_count"] = str(len(content_types))
         except Exception:
             components["orchestrator"] = "unhealthy"
         

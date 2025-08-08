@@ -4,7 +4,10 @@ import httpx
 import asyncio
 from typing import Dict, List, Any, Optional
 import streamlit as st
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class TargetScriptAIClient:
     """Client for TargetScriptAI API with comprehensive error handling."""

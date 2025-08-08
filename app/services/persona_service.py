@@ -40,6 +40,7 @@ class PersonaService(LoggerMixin):
     
     def _create_default_personas(self) -> None:
         """Create default personas."""
+        
         default_personas = [
             {
                 "id": "startup_founder_tech",
@@ -96,12 +97,39 @@ class PersonaService(LoggerMixin):
                 "created_at": get_current_timestamp()
             },
             {
-                "id": "small_business_owner",
-                "name": "Small Business Owner",
+                "id": "content_creator_digital",
+                "name": "Digital Content Creator",
+                "type": PersonaType.CONTENT_CREATOR,
+                "industry": Industry.MEDIA,
+                "age_range": "22-35",
+                "experience_level": "intermediate",
+                "company_size": "freelancer",
+                "primary_goals": [
+                    "Grow audience engagement",
+                    "Monetize content effectively",
+                    "Build personal brand",
+                    "Create viral content"
+                ],
+                "pain_points": [
+                    "Algorithm changes affecting reach",
+                    "Burnout from constant content creation",
+                    "Inconsistent income",
+                    "Standing out in crowded market"
+                ],
+                "preferred_channels": ["social_media", "video", "podcasts", "blogs"],
+                "tone_preference": "casual",
+                "content_types": ["social_media", "videos", "newsletters", "tutorials"],
+                "description": "A creative professional building an online presence through engaging content across multiple platforms.",
+                "is_active": True,
+                "created_at": get_current_timestamp()
+            },
+            {
+                "id": "small_business_owner_local",
+                "name": "Local Small Business Owner",
                 "type": PersonaType.BUSINESS_OWNER,
                 "industry": Industry.RETAIL,
                 "age_range": "35-55",
-                "experience_level": "intermediate",
+                "experience_level": "beginner",
                 "company_size": "small",
                 "primary_goals": [
                     "Increase local visibility",
@@ -121,15 +149,205 @@ class PersonaService(LoggerMixin):
                 "description": "A dedicated business owner focused on serving their local community while growing sustainably.",
                 "is_active": True,
                 "created_at": get_current_timestamp()
+            },
+            {
+                "id": "enterprise_executive_ceo",
+                "name": "Enterprise CEO",
+                "type": PersonaType.EXECUTIVE,
+                "industry": Industry.TECHNOLOGY,
+                "age_range": "40-60",
+                "experience_level": "expert",
+                "company_size": "enterprise",
+                "primary_goals": [
+                    "Drive organizational transformation",
+                    "Establish thought leadership",
+                    "Attract top talent",
+                    "Influence industry direction"
+                ],
+                "pain_points": [
+                    "Managing complex stakeholder expectations",
+                    "Balancing innovation with stability",
+                    "Time constraints for strategic communication",
+                    "Maintaining authentic voice at scale"
+                ],
+                "preferred_channels": ["linkedin", "industry_publications", "conferences", "media"],
+                "tone_preference": "authoritative",
+                "content_types": ["thought_leadership", "case_studies", "whitepapers", "keynotes"],
+                "description": "A senior executive leading large-scale business transformation and industry innovation.",
+                "is_active": True,
+                "created_at": get_current_timestamp()
+            },
+            {
+                "id": "freelancer_consultant",
+                "name": "Independent Freelancer",
+                "type": PersonaType.FREELANCER,
+                "industry": Industry.PROFESSIONAL_SERVICES,
+                "age_range": "25-45",
+                "experience_level": "intermediate",
+                "company_size": "freelancer",
+                "primary_goals": [
+                    "Build steady client pipeline",
+                    "Establish expertise reputation",
+                    "Increase project rates",
+                    "Create passive income streams"
+                ],
+                "pain_points": [
+                    "Inconsistent income",
+                    "Time spent on business development",
+                    "Competing on price vs value",
+                    "Isolation from team environment"
+                ],
+                "preferred_channels": ["linkedin", "professional_networks", "referrals", "content_marketing"],
+                "tone_preference": "professional",
+                "content_types": ["case_studies", "tutorials", "linkedin_posts", "newsletters"],
+                "description": "An independent professional offering specialized services while building a sustainable practice.",
+                "is_active": True,
+                "created_at": get_current_timestamp()
+            },
+            {
+                "id": "consultant_strategy",
+                "name": "Management Consultant",
+                "type": PersonaType.CONSULTANT,
+                "industry": Industry.PROFESSIONAL_SERVICES,
+                "age_range": "30-50",
+                "experience_level": "expert",
+                "company_size": "small",
+                "primary_goals": [
+                    "Build client trust and credibility",
+                    "Demonstrate measurable ROI",
+                    "Expand into new market segments",
+                    "Develop proprietary methodologies"
+                ],
+                "pain_points": [
+                    "Proving intangible value",
+                    "Long sales cycles",
+                    "Client resistance to change",
+                    "Maintaining objectivity"
+                ],
+                "preferred_channels": ["industry_publications", "speaking", "networking", "referrals"],
+                "tone_preference": "authoritative",
+                "content_types": ["whitepapers", "case_studies", "frameworks", "presentations"],
+                "description": "A strategic advisor helping organizations solve complex business challenges and drive growth.",
+                "is_active": True,
+                "created_at": get_current_timestamp()
+            },
+            {
+                "id": "agency_owner_creative",
+                "name": "Creative Agency Owner",
+                "type": PersonaType.AGENCY_OWNER,
+                "industry": Industry.MARKETING,
+                "age_range": "32-50",
+                "experience_level": "advanced",
+                "company_size": "small",
+                "primary_goals": [
+                    "Attract high-value clients",
+                    "Showcase creative capabilities",
+                    "Build agency reputation",
+                    "Scale team and operations"
+                ],
+                "pain_points": [
+                    "Client acquisition costs",
+                    "Project scope creep",
+                    "Talent retention",
+                    "Balancing creativity with profitability"
+                ],
+                "preferred_channels": ["portfolio_sites", "case_studies", "industry_awards", "networking"],
+                "tone_preference": "creative",
+                "content_types": ["case_studies", "portfolio", "behind_scenes", "client_stories"],
+                "description": "A creative professional leading a team to deliver innovative marketing solutions for diverse clients.",
+                "is_active": True,
+                "created_at": get_current_timestamp()
+            },
+            {
+                "id": "educator_professor",
+                "name": "University Professor",
+                "type": PersonaType.EDUCATOR,
+                "industry": Industry.EDUCATION,
+                "age_range": "35-60",
+                "experience_level": "expert",
+                "company_size": "large",
+                "primary_goals": [
+                    "Share knowledge effectively",
+                    "Engage students meaningfully",
+                    "Advance research impact",
+                    "Build academic reputation"
+                ],
+                "pain_points": [
+                    "Limited time for content creation",
+                    "Keeping up with technology trends",
+                    "Budget constraints for materials",
+                    "Measuring learning outcomes"
+                ],
+                "preferred_channels": ["academic_platforms", "conferences", "journals", "social_media"],
+                "tone_preference": "educational",
+                "content_types": ["lectures", "research_papers", "educational_content", "webinars"],
+                "description": "An academic professional dedicated to advancing knowledge and inspiring the next generation of learners.",
+                "is_active": True,
+                "created_at": get_current_timestamp()
+            },
+            {
+                "id": "healthcare_professional_doctor",
+                "name": "Healthcare Professional",
+                "type": PersonaType.HEALTHCARE,
+                "industry": Industry.HEALTHCARE,
+                "age_range": "30-55",
+                "experience_level": "expert",
+                "company_size": "medium",
+                "primary_goals": [
+                    "Educate patients effectively",
+                    "Build practice reputation",
+                    "Stay current with medical advances",
+                    "Improve patient outcomes"
+                ],
+                "pain_points": [
+                    "Time constraints for communication",
+                    "Complex medical terminology",
+                    "Patient compliance challenges",
+                    "Regulatory compliance requirements"
+                ],
+                "preferred_channels": ["medical_websites", "patient_portals", "social_media", "conferences"],
+                "tone_preference": "professional",
+                "content_types": ["patient_education", "medical_articles", "health_tips", "case_studies"],
+                "description": "A medical professional focused on patient care, education, and advancing healthcare practices.",
+                "is_active": True,
+                "created_at": get_current_timestamp()
+            },
+            {
+                "id": "finance_professional_advisor",
+                "name": "Financial Advisor",
+                "type": PersonaType.FINANCE,
+                "industry": Industry.FINANCE,
+                "age_range": "28-50",
+                "experience_level": "advanced",
+                "company_size": "medium",
+                "primary_goals": [
+                    "Build client trust and confidence",
+                    "Simplify complex financial concepts",
+                    "Grow assets under management",
+                    "Establish thought leadership"
+                ],
+                "pain_points": [
+                    "Regulatory compliance constraints",
+                    "Market volatility concerns",
+                    "Client education challenges",
+                    "Competition from robo-advisors"
+                ],
+                "preferred_channels": ["financial_publications", "webinars", "newsletters", "social_media"],
+                "tone_preference": "professional",
+                "content_types": ["market_analysis", "financial_guides", "newsletters", "educational_content"],
+                "description": "A financial expert helping individuals and businesses make informed investment and financial planning decisions.",
+                "is_active": True,
+                "created_at": get_current_timestamp()
             }
         ]
         
         for persona_data in default_personas:
             persona = Persona(**persona_data)
             self._personas[persona.id] = persona
-            
+        
         self._save_personas()
         self.log_event("Default personas created", count=len(default_personas))
+
     
     def _save_personas(self) -> None:
         """Save personas to JSON file."""
