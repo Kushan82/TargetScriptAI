@@ -22,9 +22,9 @@ class AppSettings(BaseModel):
 
 class LLMSettings(BaseSettings):
     groq_api_key: str = Field(..., description="Groq API key")
-    groq_model_smart: str = Field("llama-3.1-70b-versatile", description="Smart model for reasoning")
+    groq_model_smart: str = Field("llama-3.3-70b-versatile", description="Smart model for reasoning")
     groq_model_fast: str = Field("llama-3.1-8b-instant", description="Fast model for quick tasks")
-    groq_model_creative: str = Field("mixtral-8x7b-32768", description="Creative model for content")
+    groq_model_creative: str = Field("llama-3.1-8b-instant", description="Creative model for content")
 
     temperature: float = Field(0.7, ge=0.0, le=2.0, description="Model temperature")
     max_tokens: int = Field(4096, ge=1, le=8192, description="Maximum tokens")

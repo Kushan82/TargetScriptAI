@@ -131,7 +131,7 @@ class HealthResponse(BaseModel):
                 "models": {
                     "smart": "llama-3.1-70b-versatile",
                     "fast": "llama-3.1-8b-instant",
-                    "creative": "mixtral-8x7b-32768"
+                    "creative": "gemma2-9b-it"
                 },
                 "uptime": 3661.5,
                 "timestamp": "2024-01-01T12:00:00Z"

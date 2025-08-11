@@ -508,7 +508,7 @@ def main():
     
     # Main configuration form
     with st.form("content_config_form", clear_on_submit=False):
-        
+    
         # Content type selection
         content_type, type_details = render_content_type_selector()
         
@@ -529,11 +529,11 @@ def main():
         
         st.markdown("---")
         
-        # Submit button
+        # Submit button - FIX: Replace st.button with st.form_submit_button
         col1, col2, col3 = st.columns([1, 2, 1])
         
         with col2:
-            submitted = st.form_submit_button(
+            submitted = st.form_submit_button(  # ✅ Fixed: Use form_submit_button
                 "💾 Save Configuration",
                 type="primary",
                 use_container_width=True
@@ -561,38 +561,33 @@ def main():
             if is_valid:
                 # Save to session state
                 st.session_state.content_config = config
-                
                 st.success("✅ Configuration saved successfully!")
                 st.balloons()
-                
-                # Show option to proceed
-                if st.button("🎯 Generate Content →", type="primary"):
-                    st.switch_page("pages/Generation.py")
             else:
                 st.error("❌ Please fix the following errors:")
                 for error in errors:
                     st.error(f"• {error}")
+
+# Navigation button OUTSIDE the form - ✅ This is allowed
+if st.session_state.get('content_config'):
+    st.markdown("---")
+    render_configuration_summary(st.session_state.content_config)
     
-    # Show current configuration if exists
-    if st.session_state.content_config:
-        st.markdown("---")
-        render_configuration_summary(st.session_state.content_config)
-        
-        # Quick action buttons
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            if st.button("🧠 Change Persona", use_container_width=True):
-                st.switch_page("pages/Persona_Selection.py")
-        
-        with col2:
-            if st.button("🗑️ Clear Config", use_container_width=True):
-                st.session_state.content_config = {}
-                st.rerun()
-        
-        with col3:
-            if st.button("🎯 Generate Content", type="primary", use_container_width=True):
-                st.switch_page("pages/Generation.py")
+    # Quick action buttons outside form
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        if st.button("🧠 Change Persona", use_container_width=True):
+            st.switch_page("pages/Persona_Selection.py")
+    
+    with col2:
+        if st.button("🗑️ Clear Config", use_container_width=True):
+            st.session_state.content_config = {}
+            st.rerun()
+    
+    with col3:
+        if st.button("🎯 Generate Content", type="primary", use_container_width=True):  # ✅ This is outside form
+            st.switch_page("pages/Generation.py")
 
 
 if __name__ == "__main__":
