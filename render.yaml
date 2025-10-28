@@ -3,10 +3,10 @@ services:
   - type: web
     name: targetscriptai-api
     runtime: python
-    region: oregon  # or choose closest region
+    region: oregon
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --log-level info
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
@@ -23,11 +23,7 @@ services:
       - key: ENVIRONMENT
         value: production
       - key: DEBUG
-        value: False
-      - key: API__HOST
-        value: 0.0.0.0
-      - key: API__PORT
-        fromGroup: web
+        value: "False"
     healthCheckPath: /api/v1/health/
 
   # Frontend Streamlit Service
