@@ -1,3 +1,4 @@
+---
 services:
   # Backend API Service
   - type: web
