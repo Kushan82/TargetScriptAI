@@ -22,7 +22,7 @@ TargetScriptAI is a sophisticated content generation platform that leverages spe
 - **🎯 Strategic Planning**: AI-powered content strategy and positioning
 
 ### 🏗️ Architecture
-
+```
 ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
 │ Streamlit │ │ FastAPI │ │ Groq Cloud │
 │ Frontend │◄──►│ Backend │◄──►│ LLM API │
@@ -33,7 +33,7 @@ TargetScriptAI is a sophisticated content generation platform that leverages spe
 │ LangGraph │ │ Persona │ │ Content │
 │ Workflow │◄──►│ Service │◄──►│ Orchestrator │
 └─────────────────┘ └─────────────────┘ └─────────────────┘
-
+```
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -174,71 +174,73 @@ optional:
 - additional_context: "Extra insights"
 
 ## 📁 Project Structure
+```text
 TargetScriptAI/
-├── app/ # FastAPI Backend
-│ ├── agents/ # AI Agent implementations
-│ │ ├── init.py
-│ │ ├── persona_agent.py # Persona analysis agent
-│ │ ├── strategy_agent.py # Strategy planning agent
-│ │ ├── creative_agent.py # Content generation agent
-│ │ └── qa_agent.py # Quality assurance agent
-│ ├── api/ # API endpoints
-│ │ ├── init.py
-│ │ └── v1/
-│ │ ├── init.py
-│ │ ├── endpoints/
-│ │ │ ├── health.py # Health check endpoints
-│ │ │ ├── personas.py # Persona management
-│ │ │ └── generate.py # Content generation
-│ │ └── router.py
-│ ├── config/ # Configuration management
-│ │ ├── init.py
-│ │ ├── logger.py # Logging configuration
-│ │ └── settings.py # Application settings
-│ ├── models/ # Pydantic models
-│ │ ├── init.py
-│ │ ├── personas.py # Persona data models
-│ │ ├── content.py # Content models
-│ │ └── responses.py # API response models
-│ ├── services/ # Business logic layer
-│ │ ├── init.py
-│ │ ├── llm_service.py # LLM integration service
-│ │ ├── persona_service.py # Persona management
-│ │ └── orchestrator.py # Workflow orchestration
-│ ├── utils/ # Utility functions
-│ │ ├── init.py
-│ │ └── helpers.py
-│ └── main.py # FastAPI application entry
-├── frontend/ # Streamlit Frontend
-│ ├── pages/ # Application pages
-│ │ ├── Persona_Selection.py # Persona selection UI
-│ │ ├── Content_Config.py # Content configuration
-│ │ ├── Generation.py # Content generation UI
-│ │ └── Analytics.py # Analytics dashboard
-│ ├── components/ # Reusable UI components
-│ │ └── sidebar.py # Navigation sidebar
-│ ├── utils/ # Frontend utilities
-│ │ ├── init.py
-│ │ └── api_client.py # API client wrapper
-│ └── app.py # Main Streamlit application
-├── data/ # Data storage
-│ ├── personas/ # Persona definitions
-│ │ └── default_personas.json
-│ └── workflows/ # Workflow logs (generated)
-├── tests/ # Test suite
-│ ├── init.py
-│ ├── test_agents.py # Agent tests
-│ ├── test_api.py # API endpoint tests
-│ ├── test_services.py # Service layer tests
-│ └── test_workflow.py # Workflow tests
-├── .env # Environment variables (not in repo)
-├── .env.example # Environment template
-├── .gitignore # Git ignore rules
-├── docker-compose.yml # Docker configuration
-├── Dockerfile # Docker image definition
-├── requirements.txt # Python dependencies
-├── README.md # This file
-└── LICENSE # MIT License
+├── app/                       # FastAPI Backend
+│   ├── agents/                # AI Agent implementations
+│   │   ├── __init__.py
+│   │   ├── persona_agent.py   # Persona analysis agent
+│   │   ├── strategy_agent.py  # Strategy planning agent
+│   │   ├── creative_agent.py  # Content generation agent
+│   │   └── qa_agent.py        # Quality assurance agent
+│   ├── api/                   # API endpoints
+│   │   ├── __init__.py
+│   │   └── v1/
+│   │       ├── __init__.py
+│   │       ├── endpoints/
+│   │       │   ├── health.py  # Health check
+│   │       │   ├── personas.py # Persona management
+│   │       │   └── generate.py # Content generation
+│   │       └── router.py
+│   ├── config/
+│   │   ├── __init__.py
+│   │   ├── logger.py          # Logging config
+│   │   └── settings.py        # Application settings
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── personas.py
+│   │   ├── content.py
+│   │   └── responses.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── llm_service.py
+│   │   ├── persona_service.py
+│   │   └── orchestrator.py
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   └── helpers.py
+│   └── main.py                # FastAPI entry
+├── frontend/                  # Streamlit Frontend
+│   ├── pages/
+│   │   ├── Persona_Selection.py
+│   │   ├── Content_Config.py
+│   │   ├── Generation.py
+│   │   └── Analytics.py
+│   ├── components/
+│   │   └── sidebar.py
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   └── api_client.py
+│   └── app.py
+├── data/
+│   ├── personas/
+│   │   └── default_personas.json
+│   └── workflows/
+├── tests/
+│   ├── __init__.py
+│   ├── test_agents.py
+│   ├── test_api.py
+│   ├── test_services.py
+│   └── test_workflow.py
+├── .env
+├── .env.example
+├── .gitignore
+├── docker-compose.yml
+├── Dockerfile
+├── requirements.txt
+├── README.md
+└── LICENSE
+```
 
 ## 🚀 Deployment
 
@@ -249,3 +251,4 @@ TargetScriptAI/
 3. Configure API keys in `.env`
 4. Run backend: `uvicorn app.main:app --reload`
 5. Run frontend: `streamlit run frontend/app.py`
+
