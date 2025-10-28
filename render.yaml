@@ -1,0 +1,45 @@
+services:
+  # Backend API Service
+  - type: web
+    name: targetscriptai-api
+    runtime: python
+    region: oregon  # or choose closest region
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: GROQ_API_KEY
+        sync: false
+      - key: LLM__GROQ_API_KEY
+        sync: false
+      - key: LLM__GROQ_MODEL_SMART
+        value: llama-3.3-70b-versatile
+      - key: LLM__GROQ_MODEL_FAST
+        value: llama-3.1-8b-instant
+      - key: LLM__GROQ_MODEL_CREATIVE
+        value: llama-3.1-8b-instant
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: False
+      - key: API__HOST
+        value: 0.0.0.0
+      - key: API__PORT
+        fromGroup: web
+    healthCheckPath: /api/v1/health/
+
+  # Frontend Streamlit Service
+  - type: web
+    name: targetscriptai-frontend
+    runtime: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run frontend/app.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true --server.enableCORS=false --server.enableXsrfProtection=false
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: API_URL
+        value: https://targetscriptai-api.onrender.com
