@@ -1,4 +1,3 @@
-"""FastAPI application for TargetScriptAI - Updated with API routes."""
 
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
@@ -24,10 +23,10 @@ class TargetScriptAI(LoggerMixin):
         
         @asynccontextmanager
         async def lifespan(app: FastAPI):
-            # Startup
+            
             self.log_event("Starting TargetScriptAI", version="1.0.0", environment=self.settings.app.environment)
             yield
-            # Shutdown
+            
             self.log_event("Shutting down TargetScriptAI")
         
         app = FastAPI(
@@ -40,13 +39,13 @@ class TargetScriptAI(LoggerMixin):
             openapi_tags=v1_router.tags_metadata if hasattr(v1_router, 'tags_metadata') else []
         )
         
-        # Add middleware
+        
         self._setup_middleware(app)
         
-        # Add routes
+        
         self._setup_routes(app)
         
-        # Add exception handlers
+        
         self._setup_exception_handlers(app)
         
         return app
@@ -54,7 +53,7 @@ class TargetScriptAI(LoggerMixin):
     def _setup_middleware(self, app: FastAPI):
         """Setup application middleware."""
         
-        # CORS middleware
+        
         app.add_middleware(
             CORSMiddleware,
             allow_origins=self.settings.app.cors_origins,
@@ -63,13 +62,13 @@ class TargetScriptAI(LoggerMixin):
             allow_headers=["*"],
         )
         
-        # Security middleware
+        
         app.add_middleware(
             TrustedHostMiddleware,
             allowed_hosts=self.settings.app.allowed_hosts
         )
         
-        # Request timing middleware
+        
         @app.middleware("http")
         async def add_process_time_header(request: Request, call_next):
             start_time = time.time()
@@ -77,7 +76,7 @@ class TargetScriptAI(LoggerMixin):
             process_time = time.time() - start_time
             response.headers["X-Process-Time"] = str(process_time)
             
-            # Add request ID for tracing
+            
             request_id = f"req_{int(time.time() * 1000000)}"
             response.headers["X-Request-ID"] = request_id
             
@@ -86,10 +85,10 @@ class TargetScriptAI(LoggerMixin):
     def _setup_routes(self, app: FastAPI):
         """Setup application routes."""
         
-        # Include API v1 routes
+        
         app.include_router(v1_router, prefix="/api")
         
-        # Root endpoint
+        
         @app.get("/")
         async def root():
             return {
@@ -134,7 +133,7 @@ class TargetScriptAI(LoggerMixin):
             )
 
 
-# Create application instance
+
 target_script_ai = TargetScriptAI()
 app = target_script_ai.app
 

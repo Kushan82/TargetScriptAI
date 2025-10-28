@@ -1,4 +1,3 @@
-"""Validation utility functions."""
 
 import re
 from typing import Optional
@@ -31,10 +30,10 @@ def validate_phone(phone: str) -> bool:
     if not phone or not isinstance(phone, str):
         return False
     
-    # Remove common separators
+   
     cleaned = re.sub(r'[\s\-\(\)\+\.]', '', phone)
     
-    # Check if it's all digits and reasonable length
+    
     return cleaned.isdigit() and 7 <= len(cleaned) <= 15
 
 

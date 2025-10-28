@@ -142,7 +142,7 @@ def initialize_session_state():
         st.session_state.api_client = TargetScriptAIClient()
     
     if 'generation_status' not in st.session_state:
-        st.session_state.generation_status = 'idle'  # idle, generating, completed, error
+        st.session_state.generation_status = 'idle' 
     
     if 'current_workflow' not in st.session_state:
         st.session_state.current_workflow = None
