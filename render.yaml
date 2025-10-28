@@ -6,7 +6,11 @@ services:
     region: oregon
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --log-level info
+    startCommand: >-
+      uvicorn app.main:app
+      --host 0.0.0.0
+      --port $PORT
+      --log-level info
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
@@ -33,7 +37,13 @@ services:
     region: oregon
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: streamlit run frontend/app.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true --server.enableCORS=false --server.enableXsrfProtection=false
+    startCommand: >-
+      streamlit run frontend/app.py
+      --server.port=$PORT
+      --server.address=0.0.0.0
+      --server.headless=true
+      --server.enableCORS=false
+      --server.enableXsrfProtection=false
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
