@@ -1,17 +1,17 @@
 # Agent Orchestration
-langgraph==0.2.16
+langgraph==0.2.27           
 
 # LLM Execution
 groq==0.31.0
-langchain-groq==0.1.4
-langchain==0.2.16
-langchain-community==0.2.16
-langchain-core==0.2.16
+langchain-groq==0.1.5
+langchain==0.2.27
+langchain-community==0.2.27
+langchain-core==0.2.27
 
 # Backend
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
-sqlalchemy>=2.0.27
+sqlalchemy==2.0.36
 alembic==1.13.1
 
 # Frontend
@@ -20,23 +20,22 @@ plotly==5.17.0
 kaleido==0.2.1
 
 # LLMOps & Observability
-structlog>=23.1.0
-prometheus-client>=0.19.0
+structlog==24.1.0
+prometheus-client==0.21.0
 
 # Core Dependencies
-pydantic>=2.5.0
-pydantic-settings>=2.1.0
-python-dotenv>=1.0.0
-httpx>=0.25.0
-python-multipart>=0.0.6
+pydantic==2.9.2
+pydantic-settings==2.4.0
+python-dotenv==1.0.1
+python-multipart==0.0.9
 
 # Document Processing
 python-docx>=1.1.0
 pypdf2>=3.0.1
 
 # AI/ML
-sentence-transformers>=2.2.2
-tiktoken>=0.5.0
+sentence-transformers==3.2.1
+tiktoken==0.8.0
 
 # Development Dependencies (optional)
 pytest>=7.4.0
