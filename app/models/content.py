@@ -122,7 +122,7 @@ class ContentRequest(BaseModel):
 
 class ContentResponse(BaseModel):
     """Response model for generated content."""
-    model_config = ConfigDict(protected_namespaces=())
+    # model_config = ConfigDict(protected_namespaces=())
     # Generated content
     title: Optional[str] = Field(None, description="Generated title")
     content: str = Field(..., description="Generated content")
